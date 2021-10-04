@@ -1,0 +1,40 @@
+
+.content {
+	grid-area: content;
+}
+
+.content__img {
+	height: 180px;
+	
+	background-image: url("https://images.unsplash.com/photo-1600106708867-282a0c8c467a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1628&q=80");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.content__admin {
+	margin: 15px 0px 0px 0px;
+	width: 100%;
+}
+
+.content__user {
+	display: flex;
+}
+
+.content__info {
+	width: 250px;
+	margin: 0px 0px 0px 25px;
+}
+
+.content__title {
+	font-size: 25px;
+}
+
+.content__subtitle {
+	font-size: 18px;
+}
+
+.img1 {
+	width: 200px;
+	height: 200px;
+}

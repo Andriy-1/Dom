@@ -1,0 +1,22 @@
+.sidebar {
+	grid-area: sidebar;
+	background: linear-gradient(to top right, #a9e664, #378124);
+}
+
+.items{
+	list-style-type: none;
+	
+}
+.item a{
+	text-decoration: none;
+	font-size: 22px;
+	line-height: 25px;
+	color: rgb(255, 255, 255);
+	transition: 0.3s ease;
+}
+a:hover{
+	color: red;
+}
+a.active {
+	color: rgb(47, 184, 165);
+}
