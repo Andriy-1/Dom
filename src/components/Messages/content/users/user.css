@@ -1,17 +1,17 @@
 *{
 	box-sizing: border-box;
 }
-
+a{
+	color:rgb(255, 255, 255);
+	text-decoration: none;
+}
 .user {
 	width: 20vw;
-	padding: 0px 10px 0px 0px;
-	border-right: 2px solid #444;
+	padding: 0 10px 0 10px;
+	border-right: 1px solid rgba(33, 109, 99, 0.5);
 }
 
-
-
 .user__block {
-
 }
 
 .user__items {
@@ -19,18 +19,7 @@
 	padding: 0;
 	list-style-type: none;
 	font-size: 25px;
+	letter-spacing: 1px;
 	color: #fff;
 }
 
-.user__item {
-	border-radius: 10px 15px 100px 10px ;
-	padding: 5px;
-	background: linear-gradient(#a9e664, #378124);
-	margin: 0px 0px 5px 0px;
-	transition: all 0.3s ease 0s;
-}
-
-.user__item:hover{
-	transform: scale(1.04);
-	color: rgb(25, 66, 24);
-}

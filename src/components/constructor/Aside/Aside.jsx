@@ -13,7 +13,6 @@ css-module - робить унікальним клас.
 NavLink - замінює контент без перезагрузки  використовується замість тега а
 
 */
-console.log(styleAside);
 
 const Aside = () => {
 	return (

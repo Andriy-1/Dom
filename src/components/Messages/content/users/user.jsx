@@ -1,22 +1,20 @@
 import React from "react";
-import './user.css'
+import "./user.css";
+import UserItem from "./userItem/userItem";
 
-const User = () => {
+const Users = (props) => {
+  
+  const userElements = props.users.map( user => (
+    <UserItem id={user.id} name={user.name} />
+  ));
+
   return (
-      
     <div className="user">
       <div className="user__block">
-        <ul className="user__items">
-          <li className="user__item">Andriy</li>
-          <li className="user__item">Ivan</li>
-          <li className="user__item">Vika</li>
-          <li className="user__item">Valua</li>
-          <li className="user__item">Katya</li>
-          <li className="user__item">Nastya</li>
-        </ul>
+        <ul className="user__items">{userElements}</ul>
       </div>
     </div>
   );
 };
 
-export default User;
+export default Users;

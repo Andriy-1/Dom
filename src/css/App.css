@@ -4,12 +4,13 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-color: #4444;
-	overflow: visible;
+	background-color: #142635;
+	overflow: hidden;
+	color: rgba(255, 255, 255,0.8);
 }
 
 .wrapper {
-	width: 1300px ;
+	max-width: 1920px ;
 	margin: 0 auto;
 	
 	display: grid;

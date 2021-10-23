@@ -1,12 +1,15 @@
 import React from 'react';
 // import '../css/Header.css'
 import StyleHeader from './Header.module.css';
+import {Route } from 'react-router-dom';
 
 const Header = () => {
 	return (
 		<header className={StyleHeader.header}>
-
-			<img className={StyleHeader.img} src="https://w7.pngwing.com/pngs/974/748/png-transparent-logo-house-dream-color-light-small-house-blue-computer-network-angle.png" />
+			<a href="/localhost:3000" >
+			<img src="./home.svg" className={StyleHeader.img} />
+			<span className={StyleHeader.logo}>Dom</span>
+			</a>
 		</header>
 	);
 }

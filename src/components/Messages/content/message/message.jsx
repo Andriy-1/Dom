@@ -1,20 +1,27 @@
 import React from "react";
-import './message.css'
+import "./message.css";
+import MCreateItem from "./messageCreateItem/mCreateItem";
+import MessegaItem from "./messageItem/messageItem";
+const Message = (props) => {
+  const messageElements = props.messages.map((message) => (
+    <MessegaItem
+      name={message.name}
+      message={message.message}
+      avatar={message.avatar}
+    />
+  ));
 
-const Message = () => {
-	return (
-		<div className='message'>
-			<div className='message__user'>
-				<div className='message__iconName'>
-					<img src='https://shapka-youtube.ru/wp-content/uploads/2021/02/avatarka-dlya-skaypa-dlya-parney.jpg' className='message__icon' />
-					<div className='message__name'>Ivan</div>
-				</div>
-				<div className='message__text'>
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-			</div>
-			</div>
-</div>
-	);
-}
+  return (
+    <div className="message">
+      <div className="message__status">{messageElements}</div>
+      <div>
+			  <MCreateItem
+				  dispatch={props.dispatch}
+				 newMessageText={props.newMessageText} 
+				  messages={props.messages} />
+      </div>
+    </div>
+  );
+};
 
 export default Message;

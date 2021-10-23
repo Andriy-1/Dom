@@ -1,0 +1,13 @@
+.user__item {
+	display: block;
+	padding: 5px;
+	border-bottom: 1px solid rgba(33, 68, 87, 0.8);
+	margin: 0px 0px 5px 0px;
+	
+	transition: all 0.3s ease 0s;
+}
+
+.user__item:hover{
+	transform: scale(1.04);
+	color: #3BB3BC;
+}

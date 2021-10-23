@@ -4,15 +4,18 @@
 h1,h2,h3,h4,h5,h6{
 	margin: 0;
 }
-.block__title{
-	color: rgb(61, 92, 47);
+/* .block__title{
+	color: rgba(255, 255, 255,0.8);
 	text-align: center;
 	font-size: 25px;
-	margin: 0px 0px 10px 0px;
-}
+	letter-spacing: 1px;
+	padding: 0px 10px 10px 0px;
+} */
 .block__col{
-	width: 100%;
-	height: 100%;
+	width: 99%;
+	height: 90vh;
 	display: flex;
-	justify-content: space-around;
+	border-radius: 10px;
+	border: 2px solid rgba(26, 53, 68, 0.8);
+	overflow: hidden;
 }

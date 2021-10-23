@@ -1,0 +1,30 @@
+.message__user	{
+	display: flex;
+	margin: 0px 0px 10px 0px;
+	flex: 1 1 auto;
+}
+
+.message__iconName{
+margin: 0px 10px 0px 10px;
+}
+
+.message__icon{
+width: 50px;
+border-radius: 50%;
+}
+
+.message__name{
+	margin: -5px 0px 0px 0px;
+	font-size: 20px;
+text-align: center;
+letter-spacing: 1px;
+}
+
+.message__text{
+min-width: 200px;
+	background-color: #102230;
+padding: 8px;
+border-radius: 20px;
+letter-spacing: 1px;
+box-shadow: 0 0 2px 0px rgba(33, 109, 99, 0.5);
+}
