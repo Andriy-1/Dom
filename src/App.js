@@ -8,6 +8,7 @@ import News from './components/News/news';
 import Settings from './components/Settings/setting';
 import './css/App.css';
 import { Route } from 'react-router-dom';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 function App(props) {
 
@@ -15,11 +16,9 @@ function App(props) {
 		<div className="wrapper">
 			<Header />
 			<Aside />
-			<Route path='/profile' render={() => <Profile
-				
-				newPostText={props.state.ProfilePage.newPostText}
+			<Route path='/profile' render={() => <ProfileContainer
 				post={props.state.ProfilePage.post}
-				dispatch={props.dispatch} />} />
+				store = {props.store} />} />
 
 			<Route path='/messages' render={() => <Content
 				

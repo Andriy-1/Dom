@@ -1,5 +1,5 @@
 import React from "react";
-import { addUserMessageActionCreate, onMessageChangeActionCreate } from "../../../../../redux/state";
+import { addUserMessageActionCreate, onMessageChangeActionCreate } from "../../../../../redux/messageReducer";
 import "./mCreateItem.css";
 
 
