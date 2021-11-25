@@ -1,20 +1,13 @@
 import React from "react";
-import { addUserMessageActionCreate, onMessageChangeActionCreate } from "../../../../../redux/messageReducer";
 import "./mCreateItem.css";
 
-
 const MCreateItem = (props) => {
-  const newMessage = React.createRef();
-console.log(newMessage);
+	const newMessage= React.createRef();
 
-  const addUserMessage = () => {
-    props.dispatch(addUserMessageActionCreate());
-  };
-
-  const onMessageChange = () => {
-    const text = newMessage.current.value;
-    props.dispatch(onMessageChangeActionCreate(text));
-  };
+	const onMessageChange = () => {
+	  const text = newMessage.current.value;
+	  props.onMessageChange(text);
+	};
 
   return (
     <div className="message__create">
@@ -27,7 +20,7 @@ console.log(newMessage);
           autoComplete="off"
           className="form__textarea"
         ></textarea>
-        <button onClick={addUserMessage} className="form__btn btn">
+        <button onClick={props.addMessage} className="form__btn btn">
           Send
         </button>
       </div>

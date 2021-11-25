@@ -16,9 +16,10 @@ const Message = (props) => {
       <div className="message__status">{messageElements}</div>
       <div>
 			  <MCreateItem
-				  dispatch={props.dispatch}
-				 newMessageText={props.newMessageText} 
-				  messages={props.messages} />
+				 addMessage={props.addMessage}
+				  onMessageChange={props.onMessageChange}
+				  newMessageText = {props.newMessageText}
+				 />
       </div>
     </div>
   );

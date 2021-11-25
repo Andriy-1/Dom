@@ -2,12 +2,7 @@ import React from "react";
 import StyleCreatePosts from "./CreatePosts.module.css";
 
 const CreatePosts = (props) => {
-  const newPost = React.createRef();
-
-  const addUserPost = () => {
-	  props.addPost();
-  };
-
+   const newPost = React.createRef();
   const onPostChange = () => {
     const text = newPost.current.value;
     props.onPostChange(text);
@@ -26,7 +21,7 @@ const CreatePosts = (props) => {
           type="text"
           className={StyleCreatePosts.content__input}
         />
-        <button onClick={addUserPost} className={StyleCreatePosts.content__btn}>
+        <button onClick={props.addPost} className={StyleCreatePosts.content__btn}>
           Send
         </button>
       </div>

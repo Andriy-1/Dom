@@ -3,18 +3,27 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
 
 
 const initialState = {
+	newMessageText: '',
+	users: [
+		{ id: 1, name: "Bogdan" },
+		{ id: 2, name: "Ivan" },
+		{ id: 3, name: "Vika" },
+		{ id: 4, name: "Kolya" },
+		{ id: 5, name: "Vasya" },
+		{ id: 6, name: "Nastya" },
+	],
 	messages: [
 
 		{
 			id: 1,
-			name: "Andriy",
+			name: "",
 			message: "Hello.How are you?",
 			avatar:
-				"https://scontent.fifo3-1.fna.fbcdn.net/v/t1.6435-9/41980759_105690230398190_6468212999654998016_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=7eNhNWXf8Y8AX_fOOXX&_nc_ht=scontent.fifo3-1.fna&oh=a19492b75617bfd8a139723fa58893e9&oe=61883A34",
+				"https://cdn2.iconfinder.com/data/icons/jetflat-faces/90/005_015_guy_avatar_man_human_office_clerk-512.png",
 		},
 		{
 			id: 2,
-			name: "Kolya",
+			name: "",
 			message: "Good",
 			avatar:
 				"https://images.unsplash.com/photo-1628157588553-5eeea00af15c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=80",
@@ -23,41 +32,36 @@ const initialState = {
 
 		{
 			id: 3,
-			name: "Andriy",
+			name: "",
 			message: "Hello.How are you?",
 			avatar:
-				"https://scontent.fifo3-1.fna.fbcdn.net/v/t1.6435-9/41980759_105690230398190_6468212999654998016_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=7eNhNWXf8Y8AX_fOOXX&_nc_ht=scontent.fifo3-1.fna&oh=a19492b75617bfd8a139723fa58893e9&oe=61883A34",
+				"https://cdn2.iconfinder.com/data/icons/jetflat-faces/90/005_015_guy_avatar_man_human_office_clerk-512.png",
 		},
-	],
-	newMessageText: '',
-	users: [
-		{ id: 1, name: "Andriy" },
-		{ id: 2, name: "Ivan" },
-		{ id: 3, name: "Vika" },
-		{ id: 4, name: "Kolya" },
-		{ id: 5, name: "Vasya" },
-		{ id: 6, name: "Nastya" },
 	],
 }
 
 const messageReducer = (state = initialState, action) => {
 
 	switch (action.type) {
-		case ADD_MESSAGE:
+		case ADD_MESSAGE: {
 			let newMessage = {
 				id: 4,
-				name: "Kolya",
 				message: state.newMessageText,
 				avatar: "https://images.unsplash.com/photo-1628157588553-5eeea00af15c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=80"
 			};
-			state.messages.push(newMessage);;
-			state.newMessageText = '';
-			return state;
+			return {
+				...state,
+				messages: [...state.messages, newMessage],
+				newMessageText: '',
+			};
 
-		case UPDATE_NEW_MESSAGE_TEXT:
-			state.newMessageText = action.newTextMessage;
-			return state;
-
+		}
+		case UPDATE_NEW_MESSAGE_TEXT: {
+			return {
+				...state,
+				newMessageText: action.newTextMessage,
+			};
+		}
 		default:
 			return state;
 	}
