@@ -23,7 +23,9 @@ const Aside = () => {
 						activeClassName={styleAside.active}>Profile</NavLink></li>
 				<li className={styleAside.item}><NavLink activeClassName={styleAside.active} to='/messages'>Massiges</NavLink></li>
 				<li className={styleAside.item}><NavLink activeClassName={styleAside.active} to='/news'>News</NavLink></li>
-				<li className={styleAside.item}><NavLink activeClassName={styleAside.active} to='/music'>Music</NavLink></li>
+					<li className={styleAside.item}><NavLink activeClassName={styleAside.active} to='/music'>Music</NavLink></li>
+					<br />
+					<li className={styleAside.item}><NavLink activeClassName={styleAside.active} to='/users'>Find users</NavLink></li>
 				<br />
 				<li className={styleAside.item}><NavLink activeClassName={styleAside.active} to='/settings'>Settings</NavLink></li>
 			</ul>
