@@ -1,0 +1,55 @@
+.header {
+	/* position: fixed;
+	z-index: 1; */
+	width: 100%;
+	grid-area: header;
+	background-color: rgba(26, 53, 68, 0.8);
+	text-align: left;
+	border-radius: 20px 20px 0 0;
+	min-height: 50px;
+	display: flex;
+}
+.blockLogo {
+	flex: 0 1 85%;
+}
+.header a {
+	display: flex;
+	align-items: center;
+}
+
+.img {
+	margin: 5px 0px 5px 5px;
+	width: 50px;
+	height: 50px;
+}
+
+.logo {
+	color: #3bb3bc;
+	text-transform: uppercase;
+	margin: 0px 0px 0px 5px;
+	font-size: 25px;
+	letter-spacing: 3px;
+}
+
+.login {
+	display: flex;
+	align-items: center;
+}
+
+.loginBtn {
+	margin: 0px 10px 0px 10px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+	border: none;
+	padding: 7px;
+	color: rgb(172, 168, 168);
+	background-color: #102231;
+	box-shadow: 0 0 2px 0px #c9cbcc;
+	border-radius: 10px;
+}
+.login :hover {
+	color: rgb(37, 163, 188);
+	transform: scale(1.03);
+}

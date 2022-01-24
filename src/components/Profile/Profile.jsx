@@ -10,7 +10,7 @@ const Profile = (props) => {
   ));
   return (
     <section className={StyleContentUser.content}>
-      <DataProfile />
+		  <DataProfile profile={props.profile}/>
       <CreatePosts
         onPostChange={props.onPostChange}
         addPost={props.addPost}

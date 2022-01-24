@@ -1,6 +1,5 @@
 import React from 'react';
-import Aside from './components/constructor/Aside/Aside';
-import Header from './components/constructor/Header/Header';
+import Aside from './components/Aside/Aside';
 import Music from './components/Music/music';
 import News from './components/News/news';
 import Settings from './components/Settings/setting';
@@ -9,14 +8,15 @@ import { Route } from 'react-router-dom';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import MessageContentContainer from './components/Messages/MessageContentCotainer';
 import UserContainer from './components/Users/UserContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 
 function App() {
 	return (
 		<div className="wrapper">
-			<Header />
+			<HeaderContainer />
 			<Aside />
-			<Route path='/profile' render={() => <ProfileContainer/>} />
+			<Route path='/profile/:userId?' render={() => <ProfileContainer/>} />
 			<Route path='/messages' render={() => <MessageContentContainer/>} />
 			<Route path='/news' render={() => <News />} />
 			<Route path='/music' render={() => <Music />} />
