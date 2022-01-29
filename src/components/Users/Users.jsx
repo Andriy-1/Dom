@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { userAPI } from "../../api/api";
 import "./Users.css";
 const Users = (props) => {
   const pages = [];
@@ -14,20 +13,7 @@ const Users = (props) => {
       pages.push(i);
     }
   }
-	const followUser = (id) => {
-    userAPI.postUsers(id).then((data) => {
-      if (data.resultCode === 0) {
-        props.follow(id);
-      }
-    });
-  };
-  const unfollowUser = (id) => {
-    userAPI.deleteUsers(id).then((data) => {
-      if (data.resultCode === 0) {
-        props.unfollow(id);
-      }
-    });
-  };
+ 
   return (
     <div>
       <h3 className="find-user">Users</h3>
@@ -36,12 +22,10 @@ const Users = (props) => {
           return (
             <span
               key={p}
-              className={`${
-                props.currentPage === p && "selectedPage"
-              } selectedStyle `}
-              onClick={() => {
-                props.onPageChanged(p);
-              }}
+				  onClick={() => {
+				  props.onPageChanged(p);
+				}}
+              className={`${props.currentPage === p && "selectedPage"} selectedStyle `}
             >
               {p}
             </span>
@@ -84,14 +68,16 @@ const Users = (props) => {
               {u.followed ? (
                 <button
                   className="btn blockUser__btn"
-                  onClick={() => unfollowUser(u.id)}
+                  disabled={props.followingInProgress.some((id) => id === u.id)}
+                  onClick={() => props.unfollow(u.id)}
                 >
                   Unfollow
                 </button>
               ) : (
                 <button
                   className="btn blockUser__btn"
-                  onClick={() => followUser(u.id)}
+                  disabled={props.followingInProgress.some((id) => id === u.id)}
+                  onClick={() => props.follow(u.id)}
                 >
                   Follow
                 </button>

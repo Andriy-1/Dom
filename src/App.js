@@ -9,15 +9,17 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 import MessageContentContainer from './components/Messages/MessageContentCotainer';
 import UserContainer from './components/Users/UserContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
+import Login from './components/Login/login';
 
 
 function App() {
 	return (
 		<div className="wrapper">
+			<Route path='/login' render={() => <Login />} />
 			<HeaderContainer />
 			<Aside />
-			<Route path='/profile/:userId?' render={() => <ProfileContainer/>} />
-			<Route path='/messages' render={() => <MessageContentContainer/>} />
+			<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+			<Route path='/messages' render={() => <MessageContentContainer />} />
 			<Route path='/news' render={() => <News />} />
 			<Route path='/music' render={() => <Music />} />
 			<Route path='/users' render={() => <UserContainer />} />

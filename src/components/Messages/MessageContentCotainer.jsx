@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  addUserMessageActionCreate,
-  onMessageChangeActionCreate,
-} from "../../redux/messageReducer";
+import { compose } from "redux";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { addMessage, onMessageChange } from "../../redux/messageReducer";
 import MessageContent from "./MessageContent";
 
 const mapStateToProps = (state) => {
@@ -13,20 +12,25 @@ const mapStateToProps = (state) => {
     users: state.MessagePage.users,
   };
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addMessage: () => {
-      dispatch(addUserMessageActionCreate());
-    },
-    onMessageChange: (text) => {
-      const action = onMessageChangeActionCreate(text);
-      dispatch(action);
-    },
-  };
-};
-const MessageContentContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+
+export default compose(
+  withAuthRedirect,
+  connect(mapStateToProps, { addMessage, onMessageChange })
 )(MessageContent);
 
-export default MessageContentContainer;
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addMessage: () => {
+//       dispatch(addUserMessageActionCreate());
+//     },
+//     onMessageChange: (text) => {
+//       const action = onMessageChangeActionCreate(text);
+//       dispatch(action);
+//     },
+//   };
+// };
+// const AuthRedirectComponent = withAuthRedirect(MessageContent);
+// const MessageContentContainer = connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(AuthRedirectComponent);

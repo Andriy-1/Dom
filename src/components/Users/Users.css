@@ -82,3 +82,9 @@
 .blockUser__btn{
 	border: 1px solid rgba(33, 109, 99, 0.5) !important
 }
+
+.blockUser__btn:disabled{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
