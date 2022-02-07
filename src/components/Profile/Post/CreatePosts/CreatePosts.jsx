@@ -1,32 +1,38 @@
 import React from "react";
+import { Field, reduxForm } from "redux-form";
 import StyleCreatePosts from "./CreatePosts.module.css";
 
 const CreatePosts = (props) => {
-   const newPost = React.createRef();
-  const onPostChange = () => {
-    const text = newPost.current.value;
-    props.onPostChange(text);
-  };
-
+	const onSubmit = (postData) => {
+		props.addPost(postData.addNewPost);
+	 };
   return (
     <div className={StyleCreatePosts.content__block}>
       <h3 className={StyleCreatePosts.content__posts}>My posts</h3>
+      <PostReduxForm onSubmit={onSubmit} />
+    </div>
+  );
+};
+const PostForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit}>
       <div className={StyleCreatePosts.content__form}>
-        <textarea
-          value={props.newPostText}
-          onChange={onPostChange}
-          ref={newPost}
+        <Field
+          component={"textarea"}
+          name="addNewPost"
           autoComplete="off"
           placeholder="your news..."
           type="text"
           className={StyleCreatePosts.content__input}
         />
-        <button onClick={props.addPost} className={StyleCreatePosts.content__btn}>
-          Send
-        </button>
+        <button className={StyleCreatePosts.content__btn}>Send</button>
       </div>
-    </div>
+    </form>
   );
 };
+const PostReduxForm = reduxForm({
+  form: "post",
+})(PostForm);
+
 
 export default CreatePosts;

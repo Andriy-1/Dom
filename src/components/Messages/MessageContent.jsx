@@ -11,8 +11,7 @@ const MessageContent = (props) => {
         <Message
           messages={props.messages}
           addMessage={props.addMessage}
-				  onMessageChange={props.onMessageChange}
-				  newMessageText = {props.newMessageText}
+				 
         />
       </div>
     </div>

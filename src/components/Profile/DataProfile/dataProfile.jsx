@@ -1,10 +1,10 @@
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
 import StyleContentUser from "./dataProfile.module.css";
+import StatusProfile from "./statusProfile";
 //"https://www.youloveit.ru/uploads/posts/2020-04/1586360148_youloveit_ru_bill_gravity_falls_na_avu11.jpg"
 const DataProfile = (props) => {
-	if (!props.profile) {
-	 
+  if (!props.profile) {
     return <Preloader />;
   }
   return (
@@ -25,14 +25,23 @@ const DataProfile = (props) => {
             <h2 className={StyleContentUser.content__title}>
               {props.profile.fullName}
             </h2>
-            <p className={StyleContentUser.content__subtitle}>
+            <div className={StyleContentUser.content__subtitle}>
+              <StatusProfile
+                getStatus={props.getStatus}
+                userId={props.profile.userId}
+                status={props.status}
+                updateStatus={props.updateStatus}
+              />
+              <hr />
+              {props.profile.aboutMe}
+              <br />
               {props.profile.lookingForAJobDescription}
               {props.profile.lookingForAJob != null ? (
                 <span>&#128513;</span>
               ) : (
                 <span>&#128516;</span>
               )}
-              <br />
+              <hr />
               facebook:{" "}
               {!props.profile.contacts.facebook ? (
                 <span>-&#128561;-&#128561;-&#128561;-</span>
@@ -102,7 +111,7 @@ const DataProfile = (props) => {
                   {props.profile.contacts.mainLink}
                 </a>
               )}
-            </p>
+            </div>
           </div>
         </div>
       </div>

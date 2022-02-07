@@ -18,8 +18,6 @@ const Message = (props) => {
       <div>
 			  <MCreateItem
 				 addMessage={props.addMessage}
-				  onMessageChange={props.onMessageChange}
-				  newMessageText = {props.newMessageText}
 				 />
       </div>
     </div>

@@ -3,7 +3,6 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
 
 
 const initialState = {
-	newMessageText: '',
 	users: [
 		{ id: 1, name: "Bogdan" },
 		{ id: 2, name: "Ivan" },
@@ -46,7 +45,7 @@ const messageReducer = (state = initialState, action) => {
 		case ADD_MESSAGE: {
 			let newMessage = {
 				id: 4,
-				message: state.newMessageText,
+				message: action.message,
 				avatar: "https://images.unsplash.com/photo-1628157588553-5eeea00af15c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=880&q=80"
 			};
 			return {
@@ -67,8 +66,7 @@ const messageReducer = (state = initialState, action) => {
 	}
 }
 
-export const addMessage = () => ({ type: ADD_MESSAGE, });
-export const onMessageChange = text =>
-	({ type: UPDATE_NEW_MESSAGE_TEXT, newTextMessage: text, });
+export const addMessage = (message) => ({ type: ADD_MESSAGE, message });
+
 
 export default messageReducer;

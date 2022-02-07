@@ -9,13 +9,13 @@ import ProfileContainer from './components/Profile/ProfileContainer';
 import MessageContentContainer from './components/Messages/MessageContentCotainer';
 import UserContainer from './components/Users/UserContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import Login from './components/Login/login';
+import LoginContainer from './components/Login/LoginContainer';
 
 
 function App() {
 	return (
 		<div className="wrapper">
-			<Route path='/login' render={() => <Login />} />
+			<Route path='/login' render={() => <LoginContainer />} />
 			<HeaderContainer />
 			<Aside />
 			<Route path='/profile/:userId?' render={() => <ProfileContainer />} />

@@ -7,7 +7,6 @@ import MessageContent from "./MessageContent";
 
 const mapStateToProps = (state) => {
   return {
-    newMessageText: state.MessagePage.newMessageText,
     messages: state.MessagePage.messages,
     users: state.MessagePage.users,
   };
@@ -15,7 +14,7 @@ const mapStateToProps = (state) => {
 
 export default compose(
   withAuthRedirect,
-  connect(mapStateToProps, { addMessage, onMessageChange })
+  connect(mapStateToProps, { addMessage})
 )(MessageContent);
 
 // const mapDispatchToProps = (dispatch) => {

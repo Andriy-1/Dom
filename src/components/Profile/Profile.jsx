@@ -8,13 +8,17 @@ const Profile = (props) => {
   const posts = props.post.map((e) => (
     <Post massage={e.message} like={e.like} key={e.id} />
   ));
+
   return (
     <section className={StyleContentUser.content}>
-		  <DataProfile profile={props.profile}/>
+		  <DataProfile
+			  getStatus ={props.getStatus}
+        profile={props.profile}
+        status={props.status}
+        updateStatus={props.updateStatus}
+      />
       <CreatePosts
-        onPostChange={props.onPostChange}
         addPost={props.addPost}
-        newPostText={props.newPostText}
       />
       {posts}
     </section>

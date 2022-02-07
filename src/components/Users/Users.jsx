@@ -35,7 +35,7 @@ const Users = (props) => {
       <div>
         {props.users.map((u) => (
           <div key={u.id} className="blockUser">
-            <NavLink to={"/profile/" + u.id}>
+            <NavLink  vLink to={"/profile/" + u.id}>
               <div className="blockUser__box-img">
                 <img
                   className="blockUser__img"
