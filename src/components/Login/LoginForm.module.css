@@ -1,0 +1,50 @@
+* {
+	box-sizing: border-box;
+}
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: -100px 0px 0px -260px;
+	font-size: 20px;
+}
+.blockForm {
+	text-align: center;
+}
+.checkbox {
+	width: 20px;
+	height: 20px;
+}
+
+.box {
+	margin: 10px 0px 10px 0px;
+}
+
+.btn {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+	border: none;
+	width: 100px;
+	height: 50px;
+	color: #c9cbcc;
+	background-color: #102231;
+	box-shadow: 0 0 2px 0px #c9cbcc;
+	border-radius: 10px;
+	box-shadow: 0 3px 1px 2px black;
+}
+
+.btn:hover {
+	box-shadow: 0 1px 1px 2px black;
+	background-color: rgb(50, 180, 169);
+	color: #fff;
+}
+
+.formHasError {
+	border-radius: 30px;
+	border: 1px solid goldenrod;
+	padding: 4px;
+	color: orangered;
+	margin: 0px 0px 15px 0px;
+}

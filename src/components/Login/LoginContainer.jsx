@@ -3,26 +3,20 @@ import { connect } from "react-redux";
 //import { authSingIn, getAuthUserData } from "../../redux/authReducer";
 import { compose } from "redux";
 import Login from "./Login";
-
+import { login, logout } from "../../redux/authReducer";
 class LoginContainer extends React.Component {
-	componentDidMount() {
-   //  this.props.authSingIn();
-  }
-
-	render() {
+  render() {
     return <Login {...this.props} />;
   }
 }
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
-	login: state.auth.login,
-	email: state.auth.email,
-	password: state.auth.password,
+  login: state.auth.login,
 });
 
 export default compose(
   connect(mapStateToProps, {
-	//   authSingIn,
-	//   getAuthUserData,
+    login,
+    logout,
   })
 )(LoginContainer);

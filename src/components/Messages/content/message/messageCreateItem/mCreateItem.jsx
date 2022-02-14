@@ -1,6 +1,7 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+
 import "./mCreateItem.css";
+import { AddMessageForm } from "./Form/messageForm";
 
 const MCreateItem = (props) => {
   const onSubmit = (value) => {
@@ -8,31 +9,10 @@ const MCreateItem = (props) => {
   };
   return (
     <div className="message__create">
-      <AddMessageFormRedux onSubmit={onSubmit} />
+      <AddMessageForm onSubmit={onSubmit} />
     </div>
   );
 };
 
 
-const AddMessageForm = (props) => {
-  return (
-    <form onSubmit={props.handleSubmit}>
-      <div className="message__form form">
-        <Field
-          name="newMessageText"
-          component={"textarea"}
-          type="text"
-          autoComplete="off"
-          className="form__textarea"
-          placeholder="go..."
-        />
-        <button className="form__btn btn">Send</button>
-      </div>
-    </form>
-  );
-};
-const AddMessageFormRedux = reduxForm({
-	form: "message",
- })(AddMessageForm);
- 
 export default MCreateItem;

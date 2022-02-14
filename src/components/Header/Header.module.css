@@ -49,7 +49,7 @@
 	box-shadow: 0 0 2px 0px #c9cbcc;
 	border-radius: 10px;
 }
-.login :hover {
+.block :hover {
 	color: rgb(37, 163, 188);
 	transform: scale(1.03);
 }

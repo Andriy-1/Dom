@@ -14,21 +14,24 @@ import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.match.params.userId? this.props.match.params.userId: this.props.userId ;
-	  this.props.profileUser(userId || '21992');
+    let userId = this.props.match.params.userId;
+    if (!userId) {
+      userId = this.props.autorizedUserId;
+    }
+    this.props.profileUser(userId);
   }
 
   render() {
     if (!this.props.isAuth) {
       return <Redirect to="/login" />;
-    } else {  
+    } else {
       return (
         <Profile
           {...this.props}
           profile={this.props.profile}
           status={this.props.status}
-				updateStatus={this.props.updateStatus}
-				getStatus ={this.props.getStatus}
+          updateStatus={this.props.updateStatus}
+          getStatus={this.props.getStatus}
         />
       );
     }
@@ -38,9 +41,9 @@ const mapStateToProps = (state) => {
   return {
     post: state.ProfilePage.post,
     profile: state.ProfilePage.profile,
-    userId: state.auth.id,
     status: state.ProfilePage.status,
-    userId: state.auth.userId,
+    autorizedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth,
   };
 };
 export default compose(
@@ -50,7 +53,7 @@ export default compose(
     addPost,
     profileUser,
     getStatus,
-    updateStatus,  
+    updateStatus,
   })
 )(ProfileContainer);
 // const AuthRedirectComponent = withAuthRedirect(ProfileContainer);
