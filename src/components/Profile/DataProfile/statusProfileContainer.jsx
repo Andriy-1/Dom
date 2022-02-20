@@ -1,7 +1,7 @@
 import React from "react";
 import PreloaderSmall from "../../common/Preloader/PreloaderSmall";
 
-class StatusProfile extends React.Component {
+class StatusProfileContainer extends React.Component {
   state = {
     editMode: false,
     status: this.props.status,
@@ -40,7 +40,7 @@ class StatusProfile extends React.Component {
         {!this.state.editMode && (
           <div>
             <span onDoubleClick={this.activateEditState}>
-              {this.props.status ? this.props.status : <PreloaderSmall/>}
+						 {this.props.status || '-------'}
             </span>
           </div>
         )}
@@ -59,4 +59,4 @@ class StatusProfile extends React.Component {
     );
   }
 }
-export default StatusProfile;
+export default StatusProfileContainer;

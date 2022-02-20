@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Profile from "./Profile";
 import {
   addPost,
-  onPostChange,
   profileUser,
   getStatus,
   updateStatus,
@@ -14,12 +13,12 @@ import { compose } from "redux";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.match.params.userId;
-    if (!userId) {
-      userId = this.props.autorizedUserId;
+	  let userId = this.props.match.params.userId;
+	  if (!userId) {
+		 userId = this.props.autorizedUserId;
     }
     this.props.profileUser(userId);
-  }
+   }
 
   render() {
     if (!this.props.isAuth) {
@@ -47,8 +46,8 @@ const mapStateToProps = (state) => {
   };
 };
 export default compose(
-  withAuthRedirect,
-  withRouter,
+	withRouter,
+	withAuthRedirect,
   connect(mapStateToProps, {
     addPost,
     profileUser,

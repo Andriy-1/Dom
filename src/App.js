@@ -10,23 +10,44 @@ import MessageContentContainer from './components/Messages/MessageContentCotaine
 import UserContainer from './components/Users/UserContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LoginContainer from './components/Login/LoginContainer';
+import { connect } from 'react-redux';
+import { initializeApp } from "./redux/appReducer";
+import { compose } from 'redux';
+import { withRouter } from 'react-router-dom';
+import { initialize } from 'redux-form';
+import Preloader from './components/common/Preloader/Preloader';
+
+class App extends React.Component {
+	componentDidMount() {
+		this.props.initializeApp();
+	}
 
 
-function App() {
-	return (
-		<div className="wrapper">
-			<Route path='/login' render={() => <LoginContainer />} />
-			<HeaderContainer />
-			<Aside />
-			<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-			<Route path='/messages' render={() => <MessageContentContainer />} />
-			<Route path='/news' render={() => <News />} />
-			<Route path='/music' render={() => <Music />} />
-			<Route path='/users' render={() => <UserContainer />} />
-			<Route path='/settings' render={() => <Settings />} />
-		</div>
+	render() {
+		if (!this.props.initialized) {
+			return <Preloader />
+		}
+		return (
+			<div className="wrapper" >
+				<Route path='/login' render={() => <LoginContainer />} />
+				<HeaderContainer />
+				<Aside />
+				<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+				<Route path='/messages' render={() => <MessageContentContainer />} />
+				<Route path='/news' render={() => <News />} />
+				<Route path='/music' render={() => <Music />} />
+				<Route path='/users' render={() => <UserContainer />} />
+				<Route path='/settings' render={() => <Settings />} />
+			</div>
 
-	);
+		);
+	}
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+	initialized: state.app.initialized,
+});
+export default
+	compose(
+		withRouter,
+		connect(mapStateToProps, { initializeApp }))(App);

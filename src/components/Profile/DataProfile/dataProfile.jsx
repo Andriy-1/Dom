@@ -1,7 +1,9 @@
 import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
 import StyleContentUser from "./dataProfile.module.css";
-import StatusProfile from "./statusProfile";
+import StatusProfileContainer from "./statusProfileContainer";
+//import StatusProfileContainer from "./statusProfileContainer";
+import StatusProfile from "./statusProfileHooks";
 //"https://www.youloveit.ru/uploads/posts/2020-04/1586360148_youloveit_ru_bill_gravity_falls_na_avu11.jpg"
 const DataProfile = (props) => {
   if (!props.profile) {

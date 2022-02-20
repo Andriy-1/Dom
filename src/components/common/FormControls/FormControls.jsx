@@ -1,7 +1,6 @@
 import React from "react";
 import StyleForm from "./FormControls.module.css";
 export const Textarea = ({ input, meta, ...props }) => {
-  console.log(input, meta);
   const hasError = meta.touched && meta.error;
   return (
     <div>
@@ -13,7 +12,6 @@ export const Textarea = ({ input, meta, ...props }) => {
   );
 };
 export const Input = ({ input, meta, ...props }) => {
-  console.log(input, meta);
   const hasError = meta.touched && meta.error;
   return (
     <div>
