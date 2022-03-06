@@ -5,7 +5,7 @@ const Post = (props) => {
 
 	return (
 		<div className={StylePost.content__commant}>
-					<img className={StylePost.img2} src="https://www.youloveit.ru/uploads/posts/2020-04/1586360148_youloveit_ru_bill_gravity_falls_na_avu11.jpg" alt="avatar" />
+					<img className={StylePost.img2} src="https://www.drhair.in/wp-content/uploads/2016/09/user-icon-6.png" alt="avatar" />
 			<span className={StylePost.content__text}>{props.massage} |</span>
 			<span className={StylePost.content__text}>{ props.like } like</span>
 				</div>

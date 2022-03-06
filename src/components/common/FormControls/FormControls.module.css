@@ -8,3 +8,10 @@
 .error span {
 	color: salmon;
 }
+.box {
+	margin: 10px 0px 10px 0px;
+}
+.checkbox {
+	width: 20px;
+	height: 20px;
+}

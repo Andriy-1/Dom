@@ -3,9 +3,10 @@ import React from "react";
 import StyleCreatePosts from "./CreatePosts.module.css";
 import { PostForm } from "./Form/PostForm";
 
-const CreatePosts = (props) => {
+const CreatePosts = ({addPost}) => {
+	
   const onSubmit = (postData) => {
-    props.addPost(postData.addNewPost);
+    addPost(postData.addNewPost);
   };
   return (
     <div className={StyleCreatePosts.content__block}>
@@ -15,4 +16,4 @@ const CreatePosts = (props) => {
   );
 };
 
-export default CreatePosts;
+export default React.memo(CreatePosts);

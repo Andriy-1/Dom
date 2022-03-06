@@ -10,32 +10,33 @@ import {
 import { Redirect, withRouter } from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
+import { useEffect } from "react";
 
-class ProfileContainer extends React.Component {
-  componentDidMount() {
-	  let userId = this.props.match.params.userId;
-	  if (!userId) {
-		 userId = this.props.autorizedUserId;
-    }
-    this.props.profileUser(userId);
-   }
+const ProfileContainer = ({
+  match,
+  autorizedUserId,
+  profileUser,
+  isAuth,
+  ...props
+}) => {
+  let userId = match.params.userId;
+  useEffect(() => {
+    if (!userId) userId = autorizedUserId;
+    profileUser(userId);
+  }, [userId]);
 
-  render() {
-    if (!this.props.isAuth) {
-      return <Redirect to="/login" />;
-    } else {
-      return (
-        <Profile
-          {...this.props}
-          profile={this.props.profile}
-          status={this.props.status}
-          updateStatus={this.props.updateStatus}
-          getStatus={this.props.getStatus}
-        />
-      );
-    }
+  if (!isAuth) {
+    return <Redirect to="/login" />;
+  } else {
+    return (
+      <Profile
+        {...props}
+       
+      />
+    );
   }
-}
+};
+
 const mapStateToProps = (state) => {
   return {
     post: state.ProfilePage.post,
@@ -46,8 +47,8 @@ const mapStateToProps = (state) => {
   };
 };
 export default compose(
-	withRouter,
-	withAuthRedirect,
+  withRouter,
+  withAuthRedirect,
   connect(mapStateToProps, {
     addPost,
     profileUser,
@@ -55,23 +56,3 @@ export default compose(
     updateStatus,
   })
 )(ProfileContainer);
-// const AuthRedirectComponent = withAuthRedirect(ProfileContainer);
-// const WithRouterProfileContainer = withRouter(AuthRedirectComponent);
-
-// export default connect(mapStateToProps, {
-//   addPost,
-//   onPostChange,
-//   profileUser,
-// })(WithRouterProfileContainer);
-
-// const mapDispatchToProps = (dispatch) => {
-// 	return {
-// 	  addPost: () => {
-// 		 dispatch(addUserPostActionCreate());
-// 	  },
-// 	  onPostChange: (text) => {
-// 		 const action = onPostChangeActionCreate(text);
-// 		 dispatch(action);
-// 	  },
-// 	};
-//  };

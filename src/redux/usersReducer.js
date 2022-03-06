@@ -1,12 +1,13 @@
 import { userAPI } from "../api/api";
+import { statusFollow } from "../utils/ObjHelper/objectHelper";
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET_USERS';
-const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
-const SET_USERS_TOTAL_COUNT = 'SET_USERS_TOTAL_COUNT';
-const TOGGLE_IS_FETCHING = 'TOOGLE_IS_FETCHING';
-const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
+const FOLLOW = 'users/FOLLOW';
+const UNFOLLOW = 'users/UNFOLLOW';
+const SET_USERS = 'users/SET_USERS';
+const SET_CURRENT_PAGE = 'users/SET_CURRENT_PAGE';
+const SET_USERS_TOTAL_COUNT = 'users/SET_USERS_TOTAL_COUNT';
+const TOGGLE_IS_FETCHING = 'users/TOOGLE_IS_FETCHING';
+const TOGGLE_IS_FOLLOWING_PROGRESS = 'users/TOGGLE_IS_FOLLOWING_PROGRESS';
 
 
 const initialState = {
@@ -17,31 +18,17 @@ const initialState = {
 	isFetching: false,
 	followingInProgress: [],
 }
-
 const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case FOLLOW:
 			return {
 				...state,
-				users: state.users.map(u => {
-					if (u.id === action.userId) {
-
-						return { ...u, followed: true }
-					}
-					return u;
-				})
-
+				users: statusFollow(state.users, action.userId, { followed: true })
 			}
 		case UNFOLLOW:
-
 			return {
 				...state,
-				users: state.users.map(u => {
-					if (u.id === action.userId) {
-						return { ...u, followed: false }
-					}
-					return u;
-				})
+				users: statusFollow(state.users, action.userId, { followed: false })
 			}
 		case SET_USERS: {
 			return { ...state, users: action.users }
@@ -67,7 +54,6 @@ const usersReducer = (state = initialState, action) => {
 			return state;
 	}
 }
-
 export const followSuccess = (userId) => ({ type: FOLLOW, userId });
 export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsers = (users) => ({ type: SET_USERS, users });
@@ -76,41 +62,33 @@ export const setUsersTotalCount = (totalUsersCount) => ({ type: SET_USERS_TOTAL_
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const toggleIsFollowindProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId });
 
-export const requestUsers= (pageCurrent, pageSize) => {
-	return (dispatch) => {
+export const requestUsers = (pageCurrent, pageSize) => {
+	return async (dispatch) => {
 		dispatch(toggleIsFetching(true));
 
-		userAPI
-			.getUsers(pageCurrent, pageSize)
-			.then((data) => {
-				dispatch(toggleIsFetching(false));
-				dispatch(setUsers(data.items));
-				dispatch(setCurrentPage(pageCurrent));
-				dispatch(setUsersTotalCount(data.totalCount));
-			});
+		const data = await userAPI.getUsers(pageCurrent, pageSize);
+		dispatch(setUsers(data.items));
+		dispatch(setCurrentPage(pageCurrent));
+		dispatch(setUsersTotalCount(data.totalCount));
+		dispatch(toggleIsFetching(false));
 	}
 }
 export const follow = (userId) => {
-	return (dispatch) => {
-		dispatch(toggleIsFollowindProgress(true, userId));
-		userAPI.follow(userId).then((data) => {
-			dispatch(toggleIsFollowindProgress(false, userId));
-			if (data.resultCode === 0) {
-				dispatch(followSuccess(userId));
-			}
-		});
+	return async (dispatch) => {
+		followUnfollowFlow(dispatch, userId, userAPI.follow.bind(userAPI), followSuccess);
 	}
 }
 export const unfollow = (userId) => {
-	return (dispatch) => {
-		dispatch(toggleIsFollowindProgress(true, userId));
-		userAPI.unfollow(userId).then((data) => {
-			dispatch(toggleIsFollowindProgress(false, userId));
-			if (data.resultCode === 0) {
-				dispatch(unfollowSuccess(userId));
-			}
-		});
+	return async (dispatch) => {
+		followUnfollowFlow(dispatch, userId, userAPI.unfollow.bind(userAPI), unfollowSuccess);
 	}
 }
-
+const followUnfollowFlow = async (dispatch, userId, apiMetod, objSuccess) => {
+	dispatch(toggleIsFollowindProgress(true, userId));
+	const data = await apiMetod(userId);
+	if (data.resultCode === 0) {
+		dispatch(objSuccess(userId));
+	}
+	dispatch(toggleIsFollowindProgress(false, userId));
+}
 export default usersReducer;

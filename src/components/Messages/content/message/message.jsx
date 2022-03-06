@@ -2,8 +2,8 @@ import React from "react";
 import "./message.css";
 import MCreateItem from "./messageCreateItem/mCreateItem";
 import MessegaItem from "./messageItem/messageItem";
-const Message = (props) => {
-  const messageElements = props.messages.map((message) => (
+const Message = ({messages,addMessage}) => {
+  const messageElements = messages.map((message) => (
     <MessegaItem
 		  name={message.name}
 		  key = {message.id}
@@ -17,7 +17,7 @@ const Message = (props) => {
       <div className="message__status">{messageElements}</div>
       <div>
 			  <MCreateItem
-				 addMessage={props.addMessage}
+				 addMessage={addMessage}
 				 />
       </div>
     </div>

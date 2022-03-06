@@ -2,10 +2,9 @@ import React from "react";
 import "./user.css";
 import UserItem from "./userItem/userItem";
 
-const Users = (props) => {
-  
-  const userElements = props.users.map( user => (
-    <UserItem key={user.id} name={user.name} />
+const Users = ({ users }) => {
+  const userElements = users.map((user) => (
+    <UserItem key={user.id} id={user.id} name={user.name} />
   ));
 
   return (
@@ -17,4 +16,4 @@ const Users = (props) => {
   );
 };
 
-export default Users;
+export default React.memo(Users);

@@ -1,9 +1,5 @@
 .sidebar {
-	/* position: fixed;
-z-index: 1; */
-
 	grid-area: sidebar;
-	/* background: linear-gradient(to left, #142635, #204164, #142635); */
 	padding: 0px 0px 0px 10px;
 }
 

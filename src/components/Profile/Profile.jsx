@@ -4,21 +4,21 @@ import CreatePosts from "./Post/CreatePosts/CreatePosts";
 import Post from "./Post/ElementPost/Post";
 import DataProfile from "./DataProfile/dataProfile";
 
-const Profile = (props) => {
-  const posts = props.post.map((e) => (
+const Profile = ({getStatus,post,profile,status,updateStatus,addPost}) => {
+  const posts = post.map((e) => (
     <Post massage={e.message} like={e.like} key={e.id} />
   ));
 
   return (
     <section className={StyleContentUser.content}>
 		  <DataProfile
-			  getStatus ={props.getStatus}
-        profile={props.profile}
-        status={props.status}
-        updateStatus={props.updateStatus}
+			  getStatus ={getStatus}
+        profile={profile}
+        status={status}
+        updateStatus={updateStatus}
       />
       <CreatePosts
-        addPost={props.addPost}
+        addPost={addPost}
       />
       {posts}
     </section>

@@ -4,13 +4,7 @@
 h1,h2,h3,h4,h5,h6{
 	margin: 0;
 }
-/* .block__title{
-	color: rgba(255, 255, 255,0.8);
-	text-align: center;
-	font-size: 25px;
-	letter-spacing: 1px;
-	padding: 0px 10px 10px 0px;
-} */
+
 .block__col{
 
 	width: 99%;

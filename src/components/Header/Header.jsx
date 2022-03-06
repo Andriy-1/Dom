@@ -1,26 +1,26 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+import Logo from "../../Images/logo/home.svg";
 import StyleHeader from "./Header.module.css";
 
-const Header = (props) => {
+const Header = ({ isAuth, login, logout }) => {
   return (
     <header className={StyleHeader.header}>
       <div className={StyleHeader.blockLogo}>
-        <a href="#">
-          <img src="./home.svg" className={StyleHeader.img} alt="logo" />
+        <NavLink to="/">
+          <img src={Logo} className={StyleHeader.img} alt="logo" />
           <span className={StyleHeader.logo}>Dom</span>
-        </a>
+        </NavLink>
       </div>
       <div className={StyleHeader.login}>
-        {props.isAuth ? (
-				  <div className={StyleHeader.login}>
-					 {props.login}
-					  <div className={StyleHeader.block}>
-             <button onClick={props.logout} className={StyleHeader.loginBtn}>
-				Log out
-            </button>		  
-					 </div>
+        {isAuth ? (
+          <div className={StyleHeader.login}>
+            {login}
+            <div className={StyleHeader.block}>
+              <NavLink to={"/login"} onClick={logout} className={StyleHeader.loginBtn}>
+                Log out
+              </NavLink>
+            </div>
           </div>
         ) : (
           <NavLink to={"/login"} className={StyleHeader.loginBtn}>
