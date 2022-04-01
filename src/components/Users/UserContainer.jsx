@@ -28,15 +28,14 @@ const UsersContainer = ({
   // let pagesCount = Math.ceil(totalUsersCount / pageSize);
   useEffect(() => {
     requestUsers(currentPage, pageSize);
-  }, [currentPage]);
+  }, []);
   const onPageChanged = (pageNumber) => {
     requestUsers(pageNumber, pageSize);
   };
 
-  return isFetching ? (
-    <Preloader />
-  ) : (
+  return (
     <Users
+      isFetching={isFetching}
       totalUsersCount={totalUsersCount}
       pageSize={pageSize}
       currentPage={currentPage}

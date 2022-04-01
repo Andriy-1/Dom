@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import "./Users.css";
 const basePhoto = "https://www.drhair.in/wp-content/uploads/2016/09/user-icon-6.png";
 const User = ({ user, followingInProgress, follow, unfollow }) => {
-  console.log(user);
 
   return (
     <div className="blockUser">

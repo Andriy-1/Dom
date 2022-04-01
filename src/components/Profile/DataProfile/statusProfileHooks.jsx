@@ -2,21 +2,24 @@ import React from "react";
 import PreloaderSmall from "../../common/Preloader/PreloaderSmall";
 import { useState, useEffect } from "react";
 
-const StatusProfile = ({status,userId,updateStatus,getStatus}) => {
-
+const StatusProfile = ({ status,userId, updateStatus, getStatus }) => {
   let [editMode, setEditMode] = useState(false);
   let [statusLocal, setStatus] = useState(status);
   useEffect(() => {
-    setStatus(status);
-    getStatus(userId);
-  }, [status, userId]);
+	 getStatus(userId);
+  }, []);
+	useEffect(() => {
+			setStatus(status);	  
+  }, []);
 
   const activateEditMode = () => {
     setEditMode(true);
   };
   const deactivateEditMode = () => {
     setEditMode(false);
-    updateStatus(statusLocal);
+    if (status !== statusLocal) {
+      updateStatus(statusLocal);
+    }
   };
   const onStatusChange = (e) => {
     setStatus(e.currentTarget.value);
@@ -45,4 +48,6 @@ const StatusProfile = ({status,userId,updateStatus,getStatus}) => {
   );
 };
 
-export default StatusProfile;
+
+
+export default React.memo(StatusProfile);

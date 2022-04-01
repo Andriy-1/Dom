@@ -12,30 +12,23 @@ import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 import { useEffect } from "react";
 
-const ProfileContainer = ({
+const ProfileContainer = React.memo(({
   match,
-  autorizedUserId,
   profileUser,
   isAuth,
   ...props
 }) => {
-  let userId = match.params.userId;
+  let userId = match.params.userId || props.autorizedUserId;
   useEffect(() => {
-    if (!userId) userId = autorizedUserId;
     profileUser(userId);
   }, [userId]);
 
   if (!isAuth) {
     return <Redirect to="/login" />;
   } else {
-    return (
-      <Profile
-        {...props}
-       
-      />
-    );
+    return <Profile  {...props} />;
   }
-};
+});
 
 const mapStateToProps = (state) => {
   return {

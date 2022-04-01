@@ -1,27 +1,36 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 import Preloader from "../../common/Preloader/Preloader";
 import StyleContentUser from "./dataProfile.module.css";
 import StatusProfile from "./statusProfileHooks";
 
-
-const DataProfile = ({ getStatus, profile, status, updateStatus }) => {
+const DataProfile = ({
+  match,
+  getStatus,
+  profile,
+  status,
+  updateStatus,
+  autorizedUserId,
+}) => {
+  let userId = match.params.userId|| autorizedUserId;
   if (!profile) {
     return <Preloader />;
-	}
-	const socialLink = (contacts, nameContact) => {
-		return (
-		  <div>
-			 {nameContact}
-			 {!contacts ? (
-				<span>-&#128561;-&#128561;-&#128561;-</span>
-			 ) : (
-				<a href={contacts}>{contacts}</a>
-			 )}
-		  </div>
-		);
-	 };
+  }
+  const socialLink = (contacts, nameContact) => {
+    return (
+      <div>
+        {nameContact}
+        {!contacts ? (
+          <span>-&#128561;-&#128561;-&#128561;-</span>
+        ) : (
+          <a href={contacts}>{contacts}</a>
+        )}
+      </div>
+    );
+  };
   return (
-    <div key={profile.userId}>
+    <div key={userId}>
       <div className={StyleContentUser.content__img}></div>
       <div className={StyleContentUser.content__admin}>
         <div className={StyleContentUser.content__user}>
@@ -40,8 +49,8 @@ const DataProfile = ({ getStatus, profile, status, updateStatus }) => {
             </h2>
             <div className={StyleContentUser.content__subtitle}>
               <StatusProfile
+                userId={userId}
                 getStatus={getStatus}
-                userId={profile.userId}
                 status={status}
                 updateStatus={updateStatus}
               />
@@ -71,4 +80,4 @@ const DataProfile = ({ getStatus, profile, status, updateStatus }) => {
   );
 };
 
-export default DataProfile;
+export default compose(withRouter)(DataProfile);

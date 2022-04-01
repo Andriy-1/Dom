@@ -49,6 +49,7 @@ const profileReducer = (state = initialState, action) => {
 export const addPost = (post) => ({ type: ADD_POST, post });
 export const setUserProfile = data => ({ type: SET_USER_PROFILE, data, });
 export const setStatus = status => ({ type: SET_STATUS, status, })
+
 export const profileUser = (userId) => {
 	return async (dispatch) => {
 		const data = await profileAPI.getUserProfile(userId);
