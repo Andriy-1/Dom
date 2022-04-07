@@ -1,6 +1,6 @@
 import React from "react";
 import styleAside from "./Aside.module.css";
-import { asideLink } from "./AsideLink";
+import { asideLink } from "./AsideLink.jsx";
 
 const Aside = () => {
   return (

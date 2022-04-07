@@ -6,29 +6,27 @@ import {
   profileUser,
   getStatus,
   updateStatus,
+  savePhoto,
 } from "../../redux/profileReducer";
 import { Redirect, withRouter } from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 import { useEffect } from "react";
 
-const ProfileContainer = React.memo(({
-  match,
-  profileUser,
-  isAuth,
-  ...props
-}) => {
-  let userId = match.params.userId || props.autorizedUserId;
-  useEffect(() => {
-    profileUser(userId);
-  }, [userId]);
+const ProfileContainer = React.memo(
+  ({ match, profileUser, isAuth, ...props }) => {
+    let userId = match.params.userId || props.autorizedUserId;
+    useEffect(() => {
+      profileUser(userId);
+    }, [userId]);
 
-  if (!isAuth) {
-    return <Redirect to="/login" />;
-  } else {
-    return <Profile  {...props} />;
+    if (!isAuth) {
+      return <Redirect to="/login" />;
+    } else {
+      return <Profile {...props} />;
+    }
   }
-});
+);
 
 const mapStateToProps = (state) => {
   return {
@@ -47,5 +45,6 @@ export default compose(
     profileUser,
     getStatus,
     updateStatus,
+    savePhoto,
   })
 )(ProfileContainer);

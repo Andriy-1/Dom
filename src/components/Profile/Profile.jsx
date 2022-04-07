@@ -12,6 +12,7 @@ const Profile = ({
   updateStatus,
   addPost,
   autorizedUserId,
+  savePhoto,
 }) => {
   const posts = post.map((e) => (
     <Post massage={e.message} like={e.like} key={e.id} />
@@ -25,6 +26,7 @@ const Profile = ({
         profile={profile}
         status={status}
         updateStatus={updateStatus}
+        savePhoto={savePhoto}
       />
       <CreatePosts addPost={addPost} />
       {posts}

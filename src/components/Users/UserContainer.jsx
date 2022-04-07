@@ -25,7 +25,6 @@ const UsersContainer = ({
   followingInProgress,
   isFetching,
 }) => {
-  // let pagesCount = Math.ceil(totalUsersCount / pageSize);
   useEffect(() => {
     requestUsers(currentPage, pageSize);
   }, []);

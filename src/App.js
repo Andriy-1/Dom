@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Aside from './components/Aside/Aside';
 import Music from './components/Music/music';
 import News from './components/News/news';
@@ -6,7 +6,7 @@ import Settings from './components/Settings/setting';
 import './css/App.css';
 import { Route } from 'react-router-dom';
 import ProfileContainer from './components/Profile/ProfileContainer';
-import MessageContentContainer from './components/Messages/MessageContentCotainer';
+//import MessageContentContainer from './components/Messages/MessageContentCotainer';
 import UserContainer from './components/Users/UserContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LoginContainer from './components/Login/LoginContainer';
@@ -16,7 +16,7 @@ import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { initialize } from 'redux-form';
 import Preloader from './components/common/Preloader/Preloader';
-
+const MessageContentContainer = React.lazy(() => import('./components/Messages/MessageContentCotainer'));
 class App extends React.Component {
 	componentDidMount() {
 		this.props.initializeApp();
@@ -33,7 +33,9 @@ class App extends React.Component {
 				<HeaderContainer />
 				<Aside />
 				<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-				<Route path='/messages' render={() => <MessageContentContainer />} />
+				<Suspense fallback={<Preloader />}>
+					<Route path='/messages' render={() => <MessageContentContainer />} />
+				</Suspense>
 				<Route path='/news' render={() => <News />} />
 				<Route path='/music' render={() => <Music />} />
 				<Route path='/users' render={() => <UserContainer />} />

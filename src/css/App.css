@@ -18,4 +18,6 @@ body {
 	grid-gap: 8px;
 }
 
-
+a {
+	text-decoration: none;
+}

@@ -1,10 +1,25 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { compose } from "redux";
+import { reduxForm } from "redux-form";
+import { Field } from "redux-form";
+import { CreateField, Input } from "../../common/FormControls/FormControls";
 import Preloader from "../../common/Preloader/Preloader";
+import { required } from "../../common/ValidatorsForm/validators";
 import StyleContentUser from "./dataProfile.module.css";
 import StatusProfile from "./statusProfileHooks";
-
+//  CreateField(
+// 	Field,
+// 	null,
+// 	"add file",
+// 	"PhotoFile",
+// 	[required],
+// 	Input,
+// 	 {
+// 		 type: "file",
+// 		 onChange: mainPhotoSelected
+// 	 }
+//  )
 const DataProfile = ({
   match,
   getStatus,
@@ -12,8 +27,9 @@ const DataProfile = ({
   status,
   updateStatus,
   autorizedUserId,
+  savePhoto,
 }) => {
-  let userId = match.params.userId|| autorizedUserId;
+  let userId = match.params.userId || autorizedUserId;
   if (!profile) {
     return <Preloader />;
   }
@@ -28,6 +44,12 @@ const DataProfile = ({
         )}
       </div>
     );
+  };
+
+  const mainPhotoSelected = (e) => {
+    if (e.target.files.length) {
+      savePhoto(e.target.files[0]);
+    }
   };
   return (
     <div key={userId}>
@@ -44,6 +66,8 @@ const DataProfile = ({
             alt="avatar"
           />
           <div className={StyleContentUser.content__info}>
+					  {!match.params.userId && <input type={'file'} onChange={mainPhotoSelected}/>
+             }
             <h2 className={StyleContentUser.content__title}>
               {profile.fullName}
             </h2>
@@ -79,5 +103,7 @@ const DataProfile = ({
     </div>
   );
 };
-
+// export const photoProfileForm = reduxForm({
+//   form: "file",
+// })(DataProfile);
 export default compose(withRouter)(DataProfile);

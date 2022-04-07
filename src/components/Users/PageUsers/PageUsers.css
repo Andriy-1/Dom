@@ -1,6 +1,9 @@
 
 .listNumber{
 	margin: 0 30px 20px 0;
+	text-align: center;
+	transition: all 0.3s ease 0s;
+	display: flex;
 }
 .selectedStyle{
 	padding: 5px;
@@ -16,3 +19,35 @@
 
 	
 }
+
+.btn-PageUser{
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+	border: none;
+	width: 120px;
+	height:30px;
+	margin: 5px;
+	color: #c9cbcc;
+	background-color: #102231;
+	box-shadow: 0 0 2px 0px #c9cbcc;
+	border-radius:  10px;
+}
+
+.btn-PageUser:active{
+	background-color: transparent;
+	box-shadow: 0 0 2px 0px #c9cbcc;
+}
+.btn-PageUser:hover{
+	box-shadow: 0 0 2px 1px #c9cbcc;
+	color: #3BB3BC;
+}
+.Page-Numbers{
+flex: 1 1 auto;
+}
+/* .Page-leftBtn{
+	
+}
+.Page-rightBtn{
+} */

@@ -18,16 +18,11 @@ const PageUsers = ({
   let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
   let rightPortionPageNumber = portionNumber * portionSize;
 
-  const BtnBack = () => {
-    if (currentPage !== 1) {
-      return <button onClick={() => {}}>Back</button>;
-    }
-  };
   return (
     <div className="listNumber">
       {portionNumber > 1 && (
-        <span>
-          <button 
+        <span className="Page-leftBtn">
+          <button className="btn-PageUser"
 					  onClick={() => {
 						  onPageChanged(1);
 						  setPortionNumber(1);
@@ -35,7 +30,7 @@ const PageUsers = ({
           >
             First Page
           </button>
-          <button
+          <button className="btn-PageUser"
             onClick={() => {
               setPortionNumber(portionNumber - 1);
             }}
@@ -49,7 +44,8 @@ const PageUsers = ({
           (p) => p >= leftPortionPageNumber && p <= rightPortionPageNumber
         )
         .map((p) => {
-          return (
+			  return (
+				 <div className="Page-Numbers">
             <span
               key={p}
               onClick={() => {
@@ -60,21 +56,20 @@ const PageUsers = ({
               } selectedStyle `}
             >
               {p}
-            </span>
+            </span>		  
+				 </div>
           );
         })}
       {portionCount > portionNumber && (
-        <span>
-          <button
+        <span className="Page-rightBtn">
+          <button className="btn-PageUser"
             onClick={() => {
               setPortionNumber(portionNumber + 1);
-              console.log(portionNumber);
-              console.log("+1----", portionCount);
             }}
           >
             Next
           </button>
-          <button
+          <button className="btn-PageUser"
             onClick={() => {
               setPortionNumber(portionCount);
                onPageChanged(pagesCount);

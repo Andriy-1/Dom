@@ -1,9 +1,9 @@
 import React from "react";
-import preloader from '../../../Images/loading.gif'
+import preloader from '../../../Images/rocket-nobg.gif'
 const Preloader = (props) => {
   return (
     <div >
-      <img width="100" src={preloader} alt="Loading" />
+      <img width="80" src={preloader} alt="Loading" />
     </div>
   );
 };

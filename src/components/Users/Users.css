@@ -72,3 +72,18 @@
   background-color: #cccccc;
   color: #666666;
 }
+
+.btn{
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	cursor: pointer;
+	transition: all 0.3s ease 0s;
+	border: none;
+	width: 100px;
+	height: 50px;
+	color: #c9cbcc;
+	background-color: #102231;
+	box-shadow: 0 0 2px 0px #c9cbcc;
+	border-radius:  10px;
+	
+}

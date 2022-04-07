@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import "./userItem.css";
 
 const UserItem = ({ id, name }) => {
-  console.log("UserItem");
   let path = "/messages/" + id;
   return (
     <li>
