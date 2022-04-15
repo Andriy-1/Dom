@@ -8,6 +8,7 @@ import Preloader from "../../common/Preloader/Preloader";
 import { required } from "../../common/ValidatorsForm/validators";
 import StyleContentUser from "./dataProfile.module.css";
 import StatusProfile from "./statusProfileHooks";
+import avatar from "../../../Images/avatar.png";
 //  CreateField(
 // 	Field,
 // 	null,
@@ -58,36 +59,35 @@ const DataProfile = ({
         <div className={StyleContentUser.content__user}>
           <img
             className={StyleContentUser.img1}
-            src={
-              profile.photos.large != null
-                ? profile.photos.large
-                : "https://www.drhair.in/wp-content/uploads/2016/09/user-icon-6.png"
-            }
+            src={profile.photos.large != null ? profile.photos.large : avatar}
             alt="avatar"
           />
           <div className={StyleContentUser.content__info}>
-					  {!match.params.userId && <input type={'file'} onChange={mainPhotoSelected}/>
-             }
-            <h2 className={StyleContentUser.content__title}>
-              {profile.fullName}
-            </h2>
-            <div className={StyleContentUser.content__subtitle}>
+            <div>
+              {!match.params.userId && (
+                <input type={"file"} onChange={mainPhotoSelected} />
+              )}
+              <h2 className={StyleContentUser.content__title}>
+                {profile.fullName}
+              </h2>
               <StatusProfile
                 userId={userId}
                 getStatus={getStatus}
                 status={status}
                 updateStatus={updateStatus}
               />
-              <hr />
-              {profile.aboutMe}
-              <br />
-              {profile.lookingForAJobDescription}
-              {profile.lookingForAJob != null ? (
-                <span>&#128513;</span>
-              ) : (
-                <span>&#128516;</span>
-              )}
-              <hr />
+              <div className={StyleContentUser.content__aboutMe}>
+                {profile.aboutMe}
+             
+                {profile.lookingForAJobDescription}
+                {profile.lookingForAJob != null ? (
+                  <span>&#128513;</span>
+                ) : (
+                  <span>&#128516;</span>
+                )}
+              </div>
+            </div>
+            <div className={StyleContentUser.content__social}>
               {socialLink(profile.contacts.facebook, "facebook: ")}
               {socialLink(profile.contacts.website, "Web Site: ")}
               {socialLink(profile.contacts.vk, "VK: ")}

@@ -4,9 +4,9 @@ import LoginReduxForm from "./LoginForm";
 
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
-const Login = ({ login, isAuth }) => {
+const Login = ({ login, isAuth, captchaUrl }) => {
   const onSubmit = (formData) => {
-    login(formData.email, formData.password, formData.rememberMe);
+    login(formData.email, formData.password, formData.rememberMe, formData.captha);
   };
   if (isAuth) {
     return <Redirect to={"/profile"} />;
@@ -16,7 +16,7 @@ const Login = ({ login, isAuth }) => {
       <div>
         There is a problem &#128565;. Reload the page &#128259;
         <br />
-        <LoginReduxForm onSubmit={onSubmit} />
+        <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl} />
       </div>
     </div>
   );

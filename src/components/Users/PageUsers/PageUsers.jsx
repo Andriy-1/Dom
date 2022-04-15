@@ -45,9 +45,9 @@ const PageUsers = ({
         )
         .map((p) => {
 			  return (
-				 <div className="Page-Numbers">
+				 <div className="Page-Numbers" key={p}>
             <span
-              key={p}
+              
               onClick={() => {
                 onPageChanged(p);
               }}

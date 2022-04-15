@@ -3,9 +3,12 @@
 	border: 2px solid salmon;
 }
 .error {
+	display: flex;
+	flex-direction: column;
 	color: salmon;
 }
-.error span {
+.error span {display: flex;
+	flex-direction: column;
 	color: salmon;
 }
 .box {

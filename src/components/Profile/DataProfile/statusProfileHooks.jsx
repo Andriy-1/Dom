@@ -26,11 +26,10 @@ const StatusProfile = ({ status,userId, updateStatus, getStatus }) => {
   };
   return (
     <div>
-      <hr />
       {!editMode && (
         <div>
           <span onDoubleClick={activateEditMode}>
-            {status ? status : <PreloaderSmall />}
+            Status: {status ? status : <PreloaderSmall />}
           </span>
         </div>
       )}

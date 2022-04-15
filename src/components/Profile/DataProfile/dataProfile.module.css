@@ -24,16 +24,24 @@
 }
 
 .content__info {
-	width: 250px;
+	display: flex;
 	margin: 0px 0px 0px 25px;
 }
 
 .content__title {
 	font-size: 25px;
+	line-height: 33px;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin: 0px 0px 15px 0px;
 }
 
-.content__subtitle {
+.content__aboutMe {
+	width: 200px;
 	font-size: 18px;
+}
+.content__social{
+	margin-left: 30px;
 }
 
 .img1 {

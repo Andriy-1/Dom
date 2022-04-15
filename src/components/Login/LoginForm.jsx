@@ -8,14 +8,22 @@ import {
 import StyleLoginForm from "./LoginForm.module.css";
 
 let maxLength = maxLengthCreator(50);
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
   return (
     <form className={StyleLoginForm.blockForm} onSubmit={handleSubmit}>
       <h3>Login:</h3>
-      {CreateField(Field,"form__textarea","Email","email",[required, maxLength],Input,{ autoComplete: "username",})}
       {CreateField(
         Field,
-        "form__textarea",
+        StyleLoginForm.form__login,
+        "Email",
+        "email",
+        [required, maxLength],
+        Input,
+        { autoComplete: "username" }
+      )}
+      {CreateField(
+        Field,
+        StyleLoginForm.form__login,
         "Password",
         "password",
         [required],
@@ -34,6 +42,16 @@ const LoginForm = ({ handleSubmit, error }) => {
         "input",
         { type: "checkbox" },
         "Remember me"
+      )}
+		  {captchaUrl && <img src={captchaUrl} />}
+		  {captchaUrl && CreateField(
+        Field,
+        StyleLoginForm.form__captcha,
+        "Sumbol from image",
+        "captha",
+        [required],
+        Input,
+        { },
       )}
       {error && <div className={StyleLoginForm.formHasError}>{error}</div>}
 

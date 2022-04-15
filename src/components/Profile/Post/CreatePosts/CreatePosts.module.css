@@ -8,12 +8,13 @@
 }
 .content__form{
 	display: flex;
+justify-content: center;	
+align-items: center;
 	margin: 10px 0px 10px 0px;
 }
 .content__input {
-	display: block;
-	width: 100%;
-	height: 50px;
+	width: 320px;
+	height: 60px;
 	background-color: transparent;
 	box-shadow: 0 0 2px 0px #c9cbcc;
 	border-radius:  15px;
@@ -28,8 +29,7 @@
 	transition: all 0.3s ease 0s;
 }
 .content__input:focus{
-
-	box-shadow: 0 0 2px 1px #c9cbcc;
+box-shadow: 0 0 2px 1px #c9cbcc;
 }
 /* .content__btn {
 	position: relative;
@@ -38,7 +38,6 @@
 	padding: 10px;
 	background-color: rgb(37, 136, 95);
 } */
-
 
 .content__btn:active{
 	color: #3BB3BC;

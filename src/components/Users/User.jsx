@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Users.css";
-const basePhoto = "https://www.drhair.in/wp-content/uploads/2016/09/user-icon-6.png";
+import avatar from '../../Images/avatar.png'
+// const basePhoto = "https://www.drhair.in/wp-content/uploads/2016/09/user-icon-6.png";
 const User = ({ user, followingInProgress, follow, unfollow }) => {
 
   return (
@@ -13,7 +14,7 @@ const User = ({ user, followingInProgress, follow, unfollow }) => {
             src={
               user.photos.small != null
                 ? user.photos.large
-                : basePhoto
+                : avatar
             }
             alt="avatar"
           />
